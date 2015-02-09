@@ -1,0 +1,123 @@
+Parte 1 - Introdução (10 minutos)
+
+Html5:
+-HyperText Markup Language, é a base de qualquer website
+-Tags novas, como header,footer,article,section
+-Suport para elementos gráficos, para audio e vídeo.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" 
+  <title>Page Title</title>
+</head>
+
+<body>
+
+  <h1>This is a Heading</h1>
+
+  <p>This is a paragraph.</p>
+
+<table style="width:100%">
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+</table>
+
+</body>
+
+</html>
+
+-CSS3:
+Cascading Styling Sheets, basicamente é o responsável por pôr o site bonito, 
+trata da formatação/organização de tudo no site, desde posicionamento do conteúdo até espacamento
+entre letras...
+-No css3 agora temos media queries, por exemplo:
+	@media screen and (max-width: 300px) {
+   	 body {
+        background-color: lightblue;
+    	}
+	}
+  Isto significa que quando o site for aberto num dispositivo cuja largura do ecra seja NO MÁXIMO 300pixeis, o css aplica esta configuração
+	-LESS (framework de css3)
+
+-Bootstrap (getbootstrap.com):
+ -É uma framework para html,css e javascript.
+ -Já tem o próprio ficheiro de css com tudo configurado
+ -Funciona através de um grid system, para formatar tudo direito
+ -Completamente compatível para telemóvel/tablet/desktop
+ -Muitos templates na net disponíveis free
+ -Falar do Layout-it (http://www.layoutit.com/)
+
+-Lista de links de sites com tutoriais/cursos gerais:
+	-https://www.thenewboston.com
+	-http://www.w3schools.com
+	-http://www.codeacademy.com
+	-https://www.codeeval.com/
+	-https://www.udacity.com/  <-
+	-https://www.coursera.org/
+	-https://www.codeschool.com
+	-http://chimera.labs.oreilly.com/books/1234000000754/index.html (TDD w/ django)  <-
+	-http://regexone.com/ (regular expressions)
+	-http://stephensugden.com/crash_into_python/ (python para experts)
+	-http://www.diveinto.org/python3/ (python tutorial)
+	-http://learnpythonthehardway.org/ (free ebook)    <-
+
+-O que é o django? ( https://www.djangoproject.com ):
+ -É uma framework web de alto nível em python
+ -Porquê o django? É simples, leve, rápido, e basta saber python. Além disso tem uma documentação
+  vasta e uma comunidade enorme.
+  Usa loose coupling, ou seja, as componentes do projecto/app estão todas bem separadas, o que facilita não só o debug, mas a organização e divisão de tarefas.
+  É seguro: problemas como SQL injection, CSRF (cross-site request forgery) e clickjacking estão automaticamente tratados behind de scenes.
+  
+
+-o que significa MVC:
+ MVC significa Arquitectura Model-View-Controller
+ Model: No django isto significa tudo o que envolva a base de dados e o código python que actua sobre ela
+ View: Basicamente é o user interface, que no django é controlado com as views mais código html.
+ Controller: Basicamente é o que  controla tudo, trata de requests e responses, estabelece as ligações da base de dados, etc. Portanto faz a ligação entre o model e o view.  
+
+
+Parte 2 (Criar uma app):
+
+-2.1 (Instalar python e django):
+	-https://www.python.org/downloads/ (Download python 3)
+	i) https://pip.pypa.io/en/latest/installing.html#install-pip
+	ii) sacar o ficheiro get-pip.py e correr o comando python3 get-pip.py
+	iii) correr o comando pip install Django (sudo no linux/mac os)
+	iv) abrir a shell de python (comando python3)
+	v) fazer:
+		import django
+		print(django.get_version())  -> o output deverá ser 1.7.x
+	
+-2.2 (Criar a app):
+  2.2.1) Criar o projecto, app, base de dados, models
+	-
+
+  2.2.2) Brincar um bocado com o admin, criar e editar templates
+	-
+
+  2.2.3) Criar as views, urls
+	-
+
+  2.2.4) Forms, generic views
+	-
+
+  2.2.5) Testes
+	-
+  2.2.6) css e static files
+	-
+
+
+Parte 3 (Colocar a app online): 
+-O que é o Google App Engine
+-Instalar o google app engine
+-Configurar o gae para o deploy da app
