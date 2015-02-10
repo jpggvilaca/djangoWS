@@ -100,7 +100,80 @@ Parte 2 (Criar uma app):
 	
 -2.2 (Criar a app):
   2.2.1) Criar o projecto, app, base de dados, models
-	-
+	- Executar django-admin.py start project nome_do_projecto
+		mysite/
+   			manage.py
+    			mysite/
+       				__init__.py
+       				settings.py
+        			urls.py
+        			wsgi.py
+	- Vamos usar a base de dados default (sqlite3), se fosse para usar outra precisaríamos de
+	 mudar algumas linhas no ficheiro settings.py e criar uma bd à parte
+	- Como algumas das apps default do django usam tabelas na base de dados, temos de criá-las primeiro.
+	- Executar python3 manage.py migrate
+	- Verificar se está tudo a funcionar correctamente e se o servidor está UP, python3 manage.py runserver
+	- GOTO http://127.0.0.1:8000/
+	- Se quiséssemos podiamos dar-lhe uma porta como argumento, e um ip tambem
+			python3 manage.py runserver 8080
+	- Não é preciso reiniciar o servidor sempre, só quando se adicionam ficheiros ou alterámos modelos.
+	- Um projecto é 1 conjunto de apps, portanto vamos criar a nossa app.
+	- CD para o directório onde está manage.py e executar python3 manage.py startapp nome_da_app
+		nome_da_app/
+    			__init__.py
+    			admin.py
+  			migrations/
+    				__init__.py
+   			models.py
+   			tests.py
+   			views.py
+	- Agora, first step, definir os nossos modelos, ou seja, o layout da base de dados
+	- (codigo parte 1)
+	- O nome da classe é o nome da tabela, e os argumentos são as colunas
+	- Alguns field's precisam de valores default
+	- Agora temos de conectar a app ao nosso projecto
+	- Ir a "INSTALLED_APPS" em mysite/settings.py e adicionar a nossa app
+	- Como fizemos mudanças nos models, convem manter um historico das mesmas, fazemos isso com:
+		python3 manage.py makemigrations nome_da_app
+	- Para vermos o codigo SQL gerado por esta migração corremos o comando:
+		python3 manage.py sqlmigrate nome_da_app 0001
+	- Agora parar efectivamente criar as tabelas na bd usamos:
+		python3 manage.py migrate
+	- Brincar com a api do django (no mesmo directiorio de mysite):
+		python3 manage.py shell
+		from polls.models import Question, Choice
+		Question.objects.all()
+		from django.utils import timezone
+		q = Question(question_text="What's new?", pub_date=timezone.now())
+		q.save()
+		q.id 
+		q.question_text 
+		q.pub_date 
+		q.question_text = "What's up?" q.save()
+		Question.objects.all()
+		<ADICIONAR METODOS __str__>
+		Abrir shell novamente
+		Question.objects.all()
+		Question.objects.filter(id=1)
+		Question.objects.filter(question_text__startswith='What')
+		from django.utils import timezone
+		current_year = timezone.now().year
+		Question.objects.get(pub_date__year=current_year)
+		Question.objects.get(id=2)
+		Question.objects.get(pk=1)
+		q = Question.objects.get(pk=1)
+		q.was_published_recently()
+		q = Question.objects.get(pk=1)
+		q.choice_set.all()
+		q.choice_set.create(choice_text='Not much', votes=0)
+		q.choice_set.create(choice_text='The sky', votes=0)
+		c = q.choice_set.create(choice_text='Just hacking again', votes=0)
+		c.question
+		q.choice_set.all()
+		q.choice_set.count()
+		Choice.objects.filter(question__pub_date__year=current_year)
+		c = q.choice_set.filter(choice_text__startswith='Just hacking')
+		c.delete()
 
   2.2.2) Brincar um bocado com o admin, criar e editar templates
 	-
