@@ -165,9 +165,9 @@ Parte 2 (Criar uma app):
 		q.was_published_recently()
 		q = Question.objects.get(pk=1)
 		q.choice_set.all()
-		q.choice_set.create(choice_text='Not much', votes=0)
-		q.choice_set.create(choice_text='The sky', votes=0)
-		c = q.choice_set.create(choice_text='Just hacking again', votes=0)
+		q.choice_set.create(choice_text='Paulo deus da sensualidade', votes=0)
+		q.choice_set.create(choice_text='Paulo a presidente', votes=0)
+		c = q.choice_set.create(choice_text='Paulo swallows', votes=0)
 		c.question
 		q.choice_set.all()
 		q.choice_set.count()
@@ -176,7 +176,27 @@ Parte 2 (Criar uma app):
 		c.delete()
 
   2.2.2) Brincar um bocado com o admin, criar e editar templates
-	-
+	- Admin é o site para administradores do mesmo editarem o conteudo do site
+	- Vamos criar então um superuser para o nosso site:
+		python3 manage.py createsuperuser
+	- Abrimos o server:
+		python3 manage.py runserver, e vamos a
+		http://127.0.0.1:8000/admin/
+	- Os groups e users que lá estão são da app django.contrib.auth, e como podem ver nada do que criamos está lá, por isso 
+	 precisamos de dizer ao admin que o objectos Questions têm uma interface de admin.
+	- abrimos myapp/admin.py, e editamos:
+		from django.contrib import admin
+		from polls.models import Question
+	- E pronto , todo este código que teríamos que escrever à mão é-nos oferecido pelo django, 
+		html,css e javascripts (widgets) é tudo feito automaticamente.
+	- Podemos claro personalizar isto tudo, como ocuparia muito tempo fazer isso podemos já
+		colar só este código aqui para ter uma ideia do que poderíamos fazer:
+			(parte2.py)
+	- Agora só rapidamente personalizar o admin change list
+		(parte2.py)
+	- Podemos claro editar tudo na pagina do admin, mas vou passar isso à frente
+
+
 
   2.2.3) Criar as views, urls
 	-
